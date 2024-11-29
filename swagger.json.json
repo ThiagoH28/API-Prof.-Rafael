@@ -1,0 +1,49 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Biblioteca API",
+      "description": "API para gerenciar livros, autores e usuários."
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+      "/books/": {
+        "get": {
+          "summary": "Listar todos os livros",
+          "responses": {
+            "200": {"description": "Lista de livros"}
+          }
+        },
+        "post": {
+          "summary": "Criar um novo livro",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Dados do livro",
+              "required": true,
+              "schema": {"$ref": "#/definitions/Book"}
+            }
+          ],
+          "responses": {
+            "201": {"description": "Livro criado"}
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Book": {
+        "type": "object",
+        "properties": {
+          "title": {"type": "string"},
+          "genre": {"type": "string"},
+          "year": {"type": "integer"},
+          "available": {"type": "boolean"},
+          "author_id": {"type": "integer"}
+        }
+      }
+    }
+  }
+  
